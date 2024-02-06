@@ -2,14 +2,27 @@ pipeline {
     agent any
     stages {
         stage("Verifiying tools") {
+              stage("Prepare") {
             steps {
-                sh 'docker version'
+                bitbucketStatusNotify buildState: "INPROGRESS"
+            }
+        }
+
+        stage("Build and start test image") {
+            steps {
+                sh "docker-composer build"
+                sh "docker-compose up -d"
+                waitUntilServicesReady
+            }
+        }
+            // steps {
+            //     sh 'docker version'
                 // docker info
                 // docker compose version
                 // curl --version
                 // jq --version
                 // '''
-            }
+            // }
         }
         // stage("Prune Docker Data") {
         //     steps {
