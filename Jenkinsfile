@@ -1,21 +1,23 @@
 pipeline {
     agent any
     stages {
-        stage('Verifiying tools') {
+        stage("Verifiying tools") {
             steps {
-                sh 'docker --version'
-                sh 'docker info'
-                sh 'docker compose version'
-                sh 'curl --version'
-                sh 'jq --version'
+                sh '''
+                docker version
+                docker info
+                docker compose version
+                curl --version
+                jq --version
+                '''
             }
         }
-        stage('Prune Docker Data') {
+        stage("Prune Docker Data") {
             steps {
                 sh 'docker system prune -a --volumes -f'
             }
         }
-        stage('Start Container') {
+        stage("Start Container") {
             steps {
                 sh 'docker compose up -d --no-color --wait'
                 sh 'docker compose ps'
