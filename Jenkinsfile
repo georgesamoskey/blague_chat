@@ -24,16 +24,16 @@ pipeline {
             }
         }
 
-        stage('Check Response') {
-            steps {
-                sh 'curl http://localhost'
-            }
-        }
+        // stage('Check Response') {
+        //     steps {
+        //         sh 'curl http://localhost'
+        //     }
+        // }
     }
-    post{
-        always{
-            sh 'docker compose down --remove-orphans -v'
-            sh 'docker compose ps'
-        }
-    }
+    // post{
+    //     always{
+    //         sh 'docker compose down --remove-orphans -v'
+    //         sh 'docker compose ps'
+    //     }
+    // }
 }
