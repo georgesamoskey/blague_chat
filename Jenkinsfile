@@ -4,11 +4,11 @@ pipeline {
         stage("Verifiying tools") {
             steps {
                 sh '''
-                docker version
-                docker info
-                docker compose version
-                curl --version
-                jq --version
+                    docker version
+                    docker info
+                    docker compose version
+                    curl --version
+                    jq --version
                 '''
             }
         }
@@ -24,11 +24,7 @@ pipeline {
             }
         }
 
-        // stage('Check Response') {
-        //     steps {
-        //         sh 'curl http://localhost'
-        //     }
-        // }
+
     }
     // post{
     //     always{
