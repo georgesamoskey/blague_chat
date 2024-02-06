@@ -4,6 +4,7 @@ pipeline {
         stage("Verifiying tools") {
             steps {
                 sh '''
+                    cd env-ci/
                     docker version
                     docker info
                     docker compose version
