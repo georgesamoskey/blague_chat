@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Verifiying tools') {
             steps {
-                sh 'docker version'
+                sh 'docker --version'
                 sh 'docker info'
                 sh 'docker compose version'
                 sh 'curl --version'
