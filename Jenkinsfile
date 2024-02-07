@@ -3,16 +3,15 @@ pipeline {
     stages {
         stage("Verifiying tools") {
             steps {
-                echo 'Etape un'
-
-                // sh '''
-                //     cd env-ci/
-                //     docker version
-                //     docker info
-                //     docker compose version
-                //     curl --version
-                //     jq --version
-                // '''
+                // echo 'Etape un'
+                sh '''
+                    cd env-ci/
+                    docker version
+                    docker info
+                    docker compose version
+                    curl --version
+                    jq --version
+                '''
             }
         }
         stage("Prune Docker Data") {
