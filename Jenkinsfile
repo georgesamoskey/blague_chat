@@ -52,22 +52,19 @@ pipeline {
             bat 'docker system prune -a --volumes -f'
         }
     }
-    stage("Start Container") {
+    stage(" Demarrage de container ") {
      steps {
-             bat 'docker compose up -d --no-color --wait'
+             bat 'docker compose up -d  -p 9009:9009 --no-color --wait'
              bat 'docker compose ps'
         }
     }
-    // stage('Build') {
-    //   steps {
-    //     bat 'docker build -t my-container .'
-    //   }
-    // }
-    // stage('Run') {
-    //   steps {
-    //     bat 'docker run -d -p 9009:9009 my-container'
-    //   }
-    // }
+
+    stage("Verification de reponse ") {
+     steps {
+            bat 'curl http://localhost:9009'
+      }
+   }
+
   }
  post{
       always{
