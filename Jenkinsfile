@@ -45,7 +45,6 @@ pipeline {
         bat 'docker info'
         bat 'docker compose version'
         bat 'curl --version'
-        bat 'jq --version'
             }
         }
     stage("Creations des volumes ") {
