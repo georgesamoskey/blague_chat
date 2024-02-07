@@ -61,7 +61,7 @@ pipeline {
 
     stage("Verification de reponse ") {
      steps {
-            bat 'curl http://localhost:9009'
+            bat 'curl http://localhost:9002'
       }
    }
 
