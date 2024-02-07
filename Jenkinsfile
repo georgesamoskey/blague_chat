@@ -50,7 +50,7 @@ pipeline {
     stage('Run') {
       steps {
         script {
-          docker.image('my-image:latest').withRun('-p 8080:80') {
+          docker.image('my-image:latest').withRun('-p 8010:8010') {
             echo 'Container running...'
           }
         }
