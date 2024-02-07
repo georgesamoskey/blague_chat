@@ -38,8 +38,18 @@
 // }
 pipeline {
   agent any
-
   stages {
+    stage("Verifiying tools") {
+      steps {
+        bat '''
+            docker version
+            docker info
+            docker compose version
+            curl --version
+            jq --version
+            '''
+            }
+        }
     stage('Build') {
       steps {
         bat 'docker build -t my-container .'
