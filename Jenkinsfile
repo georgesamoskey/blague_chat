@@ -37,8 +37,7 @@ environment {
         }
         stage("Start Container") {
             steps {
-                 echo 'Etape Trois'
-
+                 echo 'Etape Trois jj'
                 // sh 'docker compose up -d --no-color --wait'
                 // sh 'docker compose ps'
             }
