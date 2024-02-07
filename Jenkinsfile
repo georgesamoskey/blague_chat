@@ -1,6 +1,6 @@
 pipeline {
-    agent any
-    stages {
+ agent { node { label 'swarm-ci' } }
+     stages {
         stage("Verifiying tools") {
             steps {
                 // echo 'Etape un'
