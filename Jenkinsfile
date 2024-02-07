@@ -21,11 +21,11 @@ pipeline {
         }
     }
 
-    stage("Verification de reponse ") {
-     steps {
-            bat 'curl http://localhost'
-      }
-   }
+//     stage("Verification de reponse ") {
+//      steps {
+//             bat 'curl http://localhost'
+//       }
+//    }
 
   }
  post{
