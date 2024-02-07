@@ -42,18 +42,12 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        script {
-          docker.build('my-image:latest', '-f Dockerfile .')
-        }
+        bat 'docker build -t my-container .'
       }
     }
     stage('Run') {
       steps {
-        script {
-          docker.image('my-image:latest').withRun('-p 8010:8010') {
-            echo 'Container running...'
-          }
-        }
+        bat 'docker run -d -p 8080:80 my-container'
       }
     }
   }
