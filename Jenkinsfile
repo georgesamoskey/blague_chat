@@ -1,5 +1,5 @@
 pipeline {
- agent { node { label 'swarm-ci' } }
+ agent { node { label 'my-node' } }
      stages {
         stage("Verifiying tools") {
             steps {
