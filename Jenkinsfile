@@ -1,12 +1,10 @@
 pipeline {
     agent { node { label 'my-node' } }
-
     stages {
         stage("Verifiying tools") {
             steps {
                 // echo 'Etape un'
-                sh '''
-                    cd env-ci/
+                  sh label: '', script: '''
                     docker version
                     docker info
                     docker compose version
