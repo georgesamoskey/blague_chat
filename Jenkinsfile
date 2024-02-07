@@ -39,7 +39,7 @@
 pipeline {
   agent any
   stages {
-    stage("Verifiying tools") {
+    stage("Verification des outils ") {
       steps {
         bat 'docker version'
         bat 'docker info'
@@ -48,15 +48,32 @@ pipeline {
         bat 'jq --version'
             }
         }
-    stage('Build') {
-      steps {
-        bat 'docker build -t my-container .'
-      }
+    stage("Creations des volumes ") {
+     steps {
+            bat 'docker system prune -a --volumes -f'
+        }
     }
-    stage('Run') {
-      steps {
-        bat 'docker run -d -p 9009:9009 my-container'
-      }
+    stage("Start Container") {
+     steps {
+             bat 'docker compose up -d --no-color --wait'
+             bat 'docker compose ps'
+        }
     }
+    // stage('Build') {
+    //   steps {
+    //     bat 'docker build -t my-container .'
+    //   }
+    // }
+    // stage('Run') {
+    //   steps {
+    //     bat 'docker run -d -p 9009:9009 my-container'
+    //   }
+    // }
   }
+ post{
+      always{
+            bat 'docker compose down --remove-orphans -v'
+            bat 'docker compose ps'
+        }
+    }
 }
