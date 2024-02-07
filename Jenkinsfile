@@ -36,27 +36,24 @@
 //     //     }
 //     // }
 // }
-
 pipeline {
-  agent {
-    docker {
-      image 'microsoft/windowsservercore'
-    }
-  }
+  agent any
+
   stages {
     stage('Build') {
       steps {
-        bat 'echo Building...'
+        script {
+          docker.build('my-image:latest', '-f Dockerfile .')
+        }
       }
     }
-    stage('Test') {
+    stage('Run') {
       steps {
-        bat 'echo Testing...'
-      }
-    }
-    stage('Deploy') {
-      steps {
-        bat 'echo Deploying...'
+        script {
+          docker.image('my-image:latest').withRun('-p 8080:80') {
+            echo 'Container running...'
+          }
+        }
       }
     }
   }
