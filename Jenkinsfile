@@ -42,11 +42,10 @@ pipeline {
     stage("Verifiying tools") {
       steps {
         bat 'docker version'
-            // docker info
-            // docker compose version
-            // curl --version
-            // jq --version
-            // '''
+        bat 'docker info'
+        bat 'docker compose version'
+        bat 'curl --version'
+        bat 'jq --version'
             }
         }
     stage('Build') {
