@@ -54,7 +54,7 @@ pipeline {
     }
     stage(" Demarrage de container ") {
      steps {
-             bat 'docker compose up -d  -p 9009:9009 --no-color --wait'
+             bat 'docker compose up -d  --no-color --wait'
              bat 'docker compose ps'
         }
     }
